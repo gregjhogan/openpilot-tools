@@ -71,6 +71,13 @@ Setup
       sudo make install
       ```
 
+    - udev rules
+        /etc/udev/rules.d/11-panda.rules
+        ```
+        SUBSYSTEMS=="usb", ATTR{idVendor}=="bbaa", ATTR{idProduct}=="ddee", MODE:="0666"
+        SUBSYSTEMS=="usb", ATTR{idVendor}=="bbaa", ATTR{idProduct}=="ddcc", MODE:="0666"
+        ```
+
     **Mac**
 
     - brew
