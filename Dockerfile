@@ -1,4 +1,6 @@
-FROM ubuntu:16.04
+# for raspberry pi: --build-arg BASE_IMAGE=armv7/armhf-ubuntu:16.04
+ARG BASE_IMAGE=ubuntu:16.04
+FROM ${BASE_IMAGE}
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -27,6 +29,8 @@ RUN apt-get update \
         libavresample-dev \
         libavfilter-dev \
         libarchive-dev \
+        libpng-dev \
+        libfreetype6-dev \
         python-qt4 \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -41,7 +45,7 @@ RUN cd /tmp \
     && rm -rf capnproto-c++-0.6.1.tar.gz capnproto-c++-0.6.1
 
 RUN cd /tmp \
-    && git clone https://github.com/commaai/c-capnproto.git \
+    && git clone -b arm https://github.com/gregjhogan/c-capnproto.git \
     && cd c-capnproto \
     && git submodule update --init --recursive \
     && autoreconf -f -i -s \
