@@ -5,7 +5,9 @@ libarchive
 lru-dict
 matplotlib==2.0.2
 numpy==1.14.5
-opencv-python==3.4.0.12
-pygame==1.9.3
+# no python2 wheel available for ARMv7
+#opencv-python==3.4.0.12
+# already installed on rpi, no python2 wheel available for ARMv7
+#pygame==1.9.3
 hexdump==3.3
 av==0.5.0
