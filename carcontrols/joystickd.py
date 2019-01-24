@@ -24,15 +24,15 @@ def joystick_thread():
   pygame.joystick.init()
 
   # Get count of joysticks
-  # joystick_count = pygame.joystick.get_count()
-  # pygame.joystick.Joystick(0).init()
-  # print(pygame.joystick.Joystick(0).get_name())
-  # print(pygame.joystick.Joystick(0).get_numaxes())
-  # pygame.joystick.Joystick(1).init()
-  # print(pygame.joystick.Joystick(1).get_name())
-  # print(pygame.joystick.Joystick(1).get_numaxes())
-  # exit()
-  joystick_count = 0
+  joystick_count = pygame.joystick.get_count()
+  #pygame.joystick.Joystick(0).init()
+  #print(pygame.joystick.Joystick(0).get_name())
+  #print(pygame.joystick.Joystick(0).get_numaxes())
+  #pygame.joystick.Joystick(1).init()
+  #print(pygame.joystick.Joystick(1).get_name())
+  #print(pygame.joystick.Joystick(1).get_numaxes())
+  #exit()
+  #joystick_count = 0
   if joystick_count > 1:
     raise ValueError("More than one joystick attached")
   elif joystick_count < 1:
@@ -71,13 +71,13 @@ def joystick_thread():
       button_3 = False # chime
 
       if keys[pygame.K_UP]:
-        axis_3 = -0.1
+        axis_1 = -0.1
       if keys[pygame.K_DOWN]:
-        axis_3 = 0.1
+        axis_1 = +0.1
       if keys[pygame.K_RIGHT]:
-        axis_1 = -1.0
+        axis_3 = +1.0
       if keys[pygame.K_LEFT]:
-        axis_1 = 1.0
+        axis_3 = -1.0
       if keys[pygame.K_ESCAPE]:
         button_0 = True
       if keys[pygame.K_RETURN]:

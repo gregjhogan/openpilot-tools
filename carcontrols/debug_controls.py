@@ -47,18 +47,20 @@ def steer_thread():
     # the other.
     actuators = car.CarControl.Actuators.new_message()
 
-    if joystick is not None:
-      axis_3 = clip(-joystick.testJoystick.axes[3] * 1.05, -1., 1.)          # -1 to 1
-      actuators.steer = axis_3
-      actuators.steerAngle = axis_3 * 43.   # deg
-      axis_1 = clip(-joystick.testJoystick.axes[1] * 1.05, -1., 1.)          # -1 to 1
-      actuators.gas = max(axis_1, 0.)
-      actuators.brake = max(-axis_1, 0.)
+    axis_3 = clip(-joystick.testJoystick.axes[3] * 1.05, -1., 1.)          # -1 to 1
+    #if axis_3:
+    #  print("STEER: {}".format(axis_3))
+    actuators.steer = axis_3
+    actuators.steerAngle = axis_3 * 43.   # deg
+    axis_1 = clip(-joystick.testJoystick.axes[1] * 1.05, -1., 1.)          # -1 to 1
+    actuators.gas = max(axis_1, 0.)
+    actuators.brake = max(-axis_1, 0.)
 
-      pcm_cancel_cmd = joystick.testJoystick.buttons[0]
-      button_1 = joystick.testJoystick.buttons[1]
-      if button_1 and not button_1_last:
-        enabled = not enabled
+    pcm_cancel_cmd = joystick.testJoystick.buttons[0]
+    button_1 = joystick.testJoystick.buttons[1]
+    if button_1 and not button_1_last:
+      enabled = not enabled
+      print("ENABLED: {}".format(enabled))
 
       button_1_last = button_1
 
