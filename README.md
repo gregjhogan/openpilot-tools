@@ -236,7 +236,10 @@ Usage:
 python carcontrols/joystickd.py
 
 # In another terminal:
-selfdrive/boardd/tests/boardd_old.py # Make sure the safety setting is hardcoded to ALL_OUTPUT
+cd selfdrive/boardd
+PYTHONPATH=<path-to-openpilot> make boardd_api_impl.so
+cd <path-to-openpilot-tools>
+PYTHONPATH=<path-to-openpilot> python selfdrive/boardd/tests/boardd_old.py # Make sure the safety setting is hardcoded to ALL_OUTPUT
 
 # In another terminal:
 python carcontrols/debug_controls.py
